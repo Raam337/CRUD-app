@@ -1,0 +1,35 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Person {
+  id: ID!
+  name: String!
+  surname: String!
+  dob: DateTime!
+  phone: Float!
+  email: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  getAllPersons: [Person!]!
+  getById(id: Float!): Person!
+}
+
+type Mutation {
+  editPerson(id: Float!, editUserArgs: EditPersonInput!): Person!
+  deletePerson(id: Float!): Person!
+}
+
+input EditPersonInput {
+  name: String
+  surname: String
+  dob: DateTime
+  phone: Float
+  email: String
+}
