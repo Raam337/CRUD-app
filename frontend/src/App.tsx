@@ -1,34 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Box } from '@chakra-ui/react'
+import Main from './pages/Main'
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <BrowserRouter>
+      <Box as="header" h="50px" bg="black"></Box>
+      <Routes>
+        <Route path='/' element={<Main />} />
+        <Route path='/:id' element={<Main />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

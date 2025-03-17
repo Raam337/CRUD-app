@@ -4,11 +4,12 @@ import casual from "casual";
 const prisma = new PrismaClient();
 
 async function main() {
+  await prisma.person.deleteMany({})
   for (let id = 1; id < 20; id++) {
     await prisma.person.upsert({
       create: {
         id,
-        name: casual.name,
+        name: casual.first_name,
         surname: casual.last_name ,
         dob: new Date(casual.date('YYYY-MM-DD')),
         phone: casual.integer( 3e9, 9e9 ),
