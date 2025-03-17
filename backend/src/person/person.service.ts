@@ -37,7 +37,7 @@ export class PersonService {
       if ( error.code = "P2025" ){
         throw new NotFoundException(`Person with ID ${personId} not found.`);
       } else {
-        throw error
+        throw new BadRequestException(`Validation issue: ${error.message}`)
       }
     }
 
@@ -45,7 +45,7 @@ export class PersonService {
 
   async deletePerson( personId: number ): Promise<Person> {
     try {
-      return this.prisma.person.delete({
+      return await this.prisma.person.delete({
         where: { id: personId }
       })
     } catch (error) {

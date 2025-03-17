@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ValidationPipe } from '@nestjs/common';
+import { BadRequestException, ValidationPipe } from '@nestjs/common';
 import {useContainer} from "class-validator";
 
 
@@ -11,6 +11,10 @@ async function bootstrap() {
     transform: true,
     whitelist: true,
     forbidNonWhitelisted: true,
+    exceptionFactory: (errors) => {
+      console.error("Validation error:", JSON.stringify(errors, null, 2)); // Log validation errors
+      return new BadRequestException(errors);
+    },
   }));
 
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
