@@ -9,7 +9,7 @@ import { PersonModule } from './person/person.module';
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'), // Auto-generate schema
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     PersonModule,
   ],

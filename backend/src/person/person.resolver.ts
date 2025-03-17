@@ -9,25 +9,30 @@ import { CreatePersonInput, EditPersonInput } from './person.types';
 export class PersonResolver {
   constructor(private personService: PersonService) {}
 
-  @Query(() => [Person]) //Get all entries
+  @Query(() => [Person], { nullable: true }) //Get all entries
   getAllPersons() {
     return this.personService.getPerson();
   }
 
-  @Query(() => Person) //Get by ID
-  getById(@Args("id") person_id: number) {
-    return this.personService.getPerson(person_id);
+  @Query(() => Person, { nullable: true }) //Get by ID
+  getById(@Args("id") personId: number) {
+    return this.personService.getPerson(personId);
   }
 
-  @Mutation(() => Person) // Edit by ID
+  @Mutation(() => Person) // Create new user
+  createPerson(@Args('newPersonArgs') newPersonArgs : CreatePersonInput) {
+    return this.personService.createPerson( newPersonArgs );
+  }
+
+  @Mutation(() => Person, { nullable: true }) // Edit by ID
   editPerson(
     @Args("id") personId: number,
-    @Args('editUserArgs') userArgs : EditPersonInput
+    @Args('editPersonArgs') userArgs : EditPersonInput
   ) {
     return this.personService.editPerson( personId, userArgs );
   }
 
-  @Mutation(() => Person) // Edit by ID
+  @Mutation(() => Person, { nullable: true }) // Delete by ID
   deletePerson(@Args("id") personId: number) {
     return this.personService.deletePerson( personId );
   }

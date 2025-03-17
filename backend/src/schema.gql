@@ -7,7 +7,7 @@ type Person {
   name: String!
   surname: String!
   dob: DateTime!
-  phone: Float!
+  phone: Int!
   email: String!
 }
 
@@ -17,13 +17,22 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type Query {
-  getAllPersons: [Person!]!
-  getById(id: Float!): Person!
+  getAllPersons: [Person!]
+  getById(id: Float!): Person
 }
 
 type Mutation {
-  editPerson(id: Float!, editUserArgs: EditPersonInput!): Person!
-  deletePerson(id: Float!): Person!
+  createPerson(newPersonArgs: CreatePersonInput!): Person!
+  editPerson(id: Float!, editPersonArgs: EditPersonInput!): Person
+  deletePerson(id: Float!): Person
+}
+
+input CreatePersonInput {
+  name: String!
+  surname: String!
+  dob: DateTime!
+  phone: Float!
+  email: String!
 }
 
 input EditPersonInput {
