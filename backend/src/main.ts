@@ -12,8 +12,16 @@ async function bootstrap() {
     whitelist: true,
     forbidNonWhitelisted: true,
     exceptionFactory: (errors) => {
-      console.error("Validation error:", JSON.stringify(errors, null, 2)); // Log validation errors
-      return new BadRequestException(errors);
+      console.error("Validation error:", JSON.stringify(errors, null, 2));
+      const errorMessages = errors
+      .map((error) => {
+        const constraintMessages = error.constraints
+        ? Object.values(error.constraints)
+        : []; 
+        return constraintMessages.join(', ');
+      })
+      .join('; ');
+      return new BadRequestException(errorMessages);
     },
   }));
 

@@ -23,8 +23,8 @@ export class CreatePersonInput {
 
   @Field()
   @IsNumber()
-  @Min(3e7)
-  @Max(9e7)
+  @Min(30_000_000)
+  @Max(90_000_000)
   phone: number;
 
   @Field()

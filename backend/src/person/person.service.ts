@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, HttpException, Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/services/prisma/prisma.service';
 import { CreatePersonInput, EditPersonInput } from './person.types';
 import { Person } from '@prisma/client';
@@ -37,7 +37,7 @@ export class PersonService {
       if ( error.code = "P2025" ){
         throw new NotFoundException(`Person with ID ${personId} not found.`);
       } else {
-        throw new BadRequestException(`Validation issue: ${error.message}`)
+        throw new Error(error)
       }
     }
 

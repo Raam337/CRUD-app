@@ -1,6 +1,6 @@
 import { GetAllPersonsQuery } from "@/graphql/generated";
 import { gql, useQuery } from "@apollo/client";
-import { Card, Container, Flex, For, Text } from "@chakra-ui/react";
+import { Box, Container, Flex, For, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 export const GET_ALL_PERSONS = gql`
@@ -16,11 +16,11 @@ export const GET_ALL_PERSONS = gql`
 function PersonList() {
   const { error, loading, data } = useQuery<GetAllPersonsQuery>(GET_ALL_PERSONS);
 
-  if (loading) return <div>Loading.......</div>;
+  if (loading) return <Box textAlign="center">Loading.......</Box>;
 
-  if (error) return <div>{error.message}</div>;
+  if (error) return <Box textAlign="center">{error.message}</Box>;
 
-  if (data?.getAllPersons?.length == 0) return <div>No data</div>;
+  if (data?.getAllPersons?.length == 0) return <Box textAlign="center">No data</Box>;
 
   return (
     <Flex direction="column" gap={4}>
