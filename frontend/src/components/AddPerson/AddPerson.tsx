@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { gql, useMutation } from "@apollo/client";
 
-const schema = yup.object().shape({
+export const schema = yup.object().shape({
   name: yup.string().required("First name is required"),
   surname: yup.string().required("Last name is required"),
   dob: yup.string().required("Date of birth is required"),
@@ -47,10 +47,6 @@ function AddPerson() {
     }
   };
 
-  const onClose = () => {
-    reset()
-  };
-
   //
   //  API processing
   //
@@ -59,9 +55,9 @@ function AddPerson() {
 
   return (
     <>
-      <Dialog.Root onExitComplete={onClose}>
+      <Dialog.Root onExitComplete={() => reset()}>
         <Dialog.Trigger asChild>
-          <Button variant="outline" w="full" mb={6} bg="gray.700" color="white">
+          <Button variant="outline" _hover={{ scale:"1.05" }} w="full" mb={6} bg="gray.700" color="white">
             Add new person
           </Button>
         </Dialog.Trigger>

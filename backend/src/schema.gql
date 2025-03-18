@@ -7,7 +7,7 @@ type Person {
   name: String!
   surname: String!
   dob: DateTime!
-  phone: Int!
+  phone: Float!
   email: String!
 }
 

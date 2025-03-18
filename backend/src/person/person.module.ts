@@ -5,6 +5,7 @@ import { PrismaService } from 'src/services/prisma/prisma.service';
 import { IsEmailUniqueConstraint } from '../services/validators/isEmailUnique';
 
 @Module({
-  providers: [PersonService, PersonResolver, PrismaService, IsEmailUniqueConstraint]
+  providers: [PersonService, PersonResolver, PrismaService, IsEmailUniqueConstraint],
+  controllers: []
 })
 export class PersonModule {}

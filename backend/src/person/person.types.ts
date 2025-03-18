@@ -1,5 +1,5 @@
 import { InputType, Field, PartialType } from '@nestjs/graphql';
-import { IsDate, IsEmail, IsInt, IsString, Length, Max, MaxDate, Min, MinDate } from 'class-validator';
+import { IsDate, IsEmail, IsInt, IsNumber, IsString, Length, Max, MaxDate, Min, MinDate } from 'class-validator';
 import { PrismaService } from 'src/services/prisma/prisma.service';
 import { IsEmailUnique } from 'src/services/validators/isEmailUnique';
 
@@ -22,9 +22,9 @@ export class CreatePersonInput {
   dob: Date;
 
   @Field()
-  @IsInt()
-  @Min(3e9)
-  @Max(9e9)
+  @IsNumber()
+  @Min(3e7)
+  @Max(9e7)
   phone: number;
 
   @Field()

@@ -12,7 +12,7 @@ async function main() {
         name: casual.first_name,
         surname: casual.last_name ,
         dob: new Date(casual.date('YYYY-MM-DD')),
-        phone: casual.integer( 3e9, 9e9 ),
+        phone: casual.integer( 3e8, 9e8 ),
         email: casual.email
 
       },

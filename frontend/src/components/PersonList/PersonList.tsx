@@ -14,9 +14,7 @@ export const GET_ALL_PERSONS = gql`
 `;
 
 function PersonList() {
-  const { error, loading, data } =
-    useQuery<GetAllPersonsQuery>(GET_ALL_PERSONS);
-  console.log("Person list: ", data);
+  const { error, loading, data } = useQuery<GetAllPersonsQuery>(GET_ALL_PERSONS);
 
   if (loading) return <div>Loading.......</div>;
 
