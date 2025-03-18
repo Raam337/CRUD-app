@@ -4,6 +4,13 @@
 **/node_modules/
 /build
 
+**/prisma/migrations/      
+**/prisma/generated/      
+**/node_modules/@prisma/      
+**/prisma/dev.db            
+**/prisma/dev.db-journal
+
+
 # Logs
 logs
 *.log
