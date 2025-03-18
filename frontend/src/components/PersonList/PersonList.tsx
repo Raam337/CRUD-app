@@ -26,7 +26,7 @@ function PersonList() {
     <Flex direction="column" gap={4}>
       <For each={data?.getAllPersons!}>
         {(item, index) => (
-          <Link to={"/" + item.id}>
+          <Link to={"/" + item.id} key={index}>
             <Container
               key={index}
               w="full"

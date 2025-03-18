@@ -164,7 +164,7 @@ function AddPerson() {
                         {...register("phone")}
                         onChange={(e) =>
                           setValue(
-                            "phone", parseInt(e.target.value)
+                            "phone", e.target.value? parseInt(e.target.value): 0
                           )
                         }
                       />

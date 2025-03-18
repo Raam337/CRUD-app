@@ -6,7 +6,7 @@ import { Box, Grid, GridItem } from "@chakra-ui/react";
 function Main() {
   return (
     <Grid
-      templateColumns="minmax(350px,20vw) 1fr"
+      templateColumns={{ base: "minmax(2,1fr)" , sm:"minmax(350px,20vw) 1fr"}}
       templateRows="calc(100vh - 50px)"
     >
       <GridItem

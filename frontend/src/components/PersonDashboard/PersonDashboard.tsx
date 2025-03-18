@@ -196,12 +196,13 @@ function PersonDashboard() {
           </Text>
           {Object.entries(entries).map(([value, key]) =>
             !person ? (
-              <Skeleton h={8} my={4} w="30%"></Skeleton>
+              <Skeleton key={key} h={8} my={4} w="30%"></Skeleton>
             ) : (
               <Editable.Root
                 value={editableValue[key]?.toString()}
                 onValueCommit={() => handleSubmit(value as keyof typeof entries)}
                 onValueChange={(newVal) => handleChange(newVal, key)}
+                key={key}
               >
                 <Text key={key}>
                   <b>{value}:</b>
